@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact name="NövényfajtaKísérletElemző:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/NövényfajtaKísérletElemz_jar</output-path>
+    <root id="root">
+      <element id="archive" name="NövényfajtaKísérletElemző.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/resources/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="NövényfajtaKísérletElemző" />
+      </element>
+      <element id="library" level="project" name="mysql.connector.java" />
+      <element id="library" level="project" name="apache.poi.excelant" />
+      <element id="dir-copy" path="$PROJECT_DIR$/resources" />
+    </root>
+  </artifact>
+</component>
