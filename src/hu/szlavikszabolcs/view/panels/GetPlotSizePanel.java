@@ -26,11 +26,11 @@ public class GetPlotSizePanel extends JPanel implements ActionListener {
     BorderLayout border = new BorderLayout();
     GridLayout grid = new GridLayout(2,2,20,20);
     JButton button = new JButton(Labels.input);
-    double plotSize;
-    double setMoistureTo;
+    private double plotSize;
+    private double setMoistureTo;
 
-    java.util.List<RawData> rawDataList;
-    static List<RawData> computedDataList = new ArrayList<>();
+    private java.util.List<RawData> rawDataList;
+    private static List<RawData> computedDataList = new ArrayList<>();
     FlowLayout flowButton = new FlowLayout(FlowLayout.CENTER);
 
 
@@ -75,10 +75,17 @@ public class GetPlotSizePanel extends JPanel implements ActionListener {
 
             if ((!getPlotSize.getText().isEmpty()) && (!getMoistureSetTo.getText().isEmpty())){
                 try {
-                    plotSize = Double.parseDouble(getPlotSize.getText());
-                    setMoistureTo = Double.parseDouble(getMoistureSetTo.getText());
-                    //System.out.println("A Parcella nagysága:" +  plotSize);
-                    //System.out.println("A kívánt nedvesség:" +  setMoistureTo);
+                    if (Double.parseDouble(getPlotSize.getText()) > 0 && Double.parseDouble(getMoistureSetTo.getText()) > 0 && Double.parseDouble(getMoistureSetTo.getText()) < 100) {
+                        plotSize = Double.parseDouble(getPlotSize.getText());
+                        setMoistureTo = Double.parseDouble(getMoistureSetTo.getText());
+                        //System.out.println("A Parcella nagysága:" +  plotSize);
+                        //System.out.println("A kívánt nedvesség:" +  setMoistureTo);
+                    } else {
+                        JOptionPane.showMessageDialog(this,Labels.numberValueError,Labels.error,JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
+
                 } catch (NumberFormatException exception){
                     JOptionPane.showMessageDialog(this,Labels.numberFormatnoError,Labels.error,JOptionPane.ERROR_MESSAGE);
                     return;
@@ -91,7 +98,10 @@ public class GetPlotSizePanel extends JPanel implements ActionListener {
 
             if (!rawDataList.isEmpty()) {
                 for (RawData raw : rawDataList) {
-                    raw.setYield((double) (Math.round(((((raw.getPlotWeight() * ((100 - raw.getMoisture()) / 100)) / ((100 - setMoistureTo) / 100)) / plotSize) * 10)*1000))/1000);
+                    //before test of the system:
+                    //raw.setYield((double) (Math.round(((((raw.getPlotWeight() * ((100 - raw.getMoisture()) / 100)) / ((100 - setMoistureTo) / 100)) / plotSize) * 10)*1000))/1000);
+                    //after test:
+                    raw.setYield((double) ((((raw.getPlotWeight() * ((100 - raw.getMoisture()) / 100)) / ((100 - setMoistureTo) / 100)) / plotSize) * 10));
                     computedDataList.add(raw);
                 }
                 //rawDataList.clear();

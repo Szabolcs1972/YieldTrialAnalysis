@@ -40,6 +40,7 @@ public class Labels {
     public static final String error = "Hiba!";
     public static final String noDataError = "Hiba! Nem olvastál be adatokat!";
     public static final String numberFormatnoError = "Hiba! Nem megfelelő számokat adtál meg!";
+    public static final String numberValueError = "Hiba! A parcella területe > 0 legyen, a nedvesség pedig > 0, és < 100 %!";
     public static final String getPlotSize = "<html>A parcella területe (m<sup>2</sup>)</html>";
     public static final String getMoistureToSet = "Mekkora nedvességre egalizáljuk a termést?";
     public static final String input = "Bevitel";
@@ -59,7 +60,13 @@ public class Labels {
     //file management
     public static final String columnNumberError = "Az oszlopok száma nem megfelelő!";
     public static final String columnLabelError = "Az oszlop fejlécek nem megfelelőek!";
+    public static final String standardValueError = "<html>A standard fajták jelölése 0, vagy 1!<br> Indítsd újra a programot!</html>";
+    public static final String nameValueError = "<html>A fajtanév mező nem lehet üres!<br> Indítsd újra a programot!</html>";
+    public static final String plotWeightValueError = "<html>A parcella tömeg 0-nál nagyobb szám legyen!<br> Indítsd újra a programot!</html>";
+    public static final String moistureValueError = "<html>A minta nedvessége 0-nál nagyobb szám legyen!<br> Indítsd újra a programot!</html>";
+
     public static final String fileDataLoadSuccess = "<html>Az adatok beolvasása sikeresen megtörtént!<br>A Számítások -> Terméseredmények számítása menüpont aktív<br>A Fájl -> Fajtakísérleti eredmények betöltése menüpont inaktív</html>";
+    public static final String fileDataLoadFailure = "<html>Hiba lépett fel az adatok betöltése során! Indítsd újra a programot!</html>";
 
     //configuration
     public static final String configFileNotFound = "A konfigurációs fájl nem található! Viszontlátásra!";
@@ -79,10 +86,21 @@ public class Labels {
     public static final String urlSzabolcs = "https://www.szlavikszabolcs.hu";
     public static final String urlSzabolcsUnderLine = "<html><u>https://www.szlavikszabolcs.hu</u></html>";
     public static final String aboutSzeged = "Szeged, 2021.";
+    public static final String aboutCC0 = "Növényfajta kísérlet elemző, Licensz: CC0 1.0 Univerzális - Közkincs nyilatkozat";
+    public static final String urlCC0 = "https://creativecommons.org/publicdomain/zero/1.0/legalcode";
+    public static final String aboutPOI = "Apache POI 5.0.0, License: Apache 2.0";
+    public static final String urlPOI = "http://www.apache.org/licenses/LICENSE-2.0.txt";
+
+    public static final String aboutMySQLConnector = "MySQL Connector/J 8.0.26, License: GPL 2.0 with FOSS exception";
+    public static final String urlFOSS = "https://oss.oracle.com/licenses/universal-foss-exception/";
+    public static final String urlGPL = "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html";
+
     public static final String aboutWebler = "Köszönet, a Webler Oktatóstudió részére!";
     public static final String urlWebler = "https://webler.hu";
     public static final String urlWeblerUnderLine = "<html><u>https://webler.hu</u></html>";
     public static final String card = "Névjegy";
     public static final String information = "Információ";
     public static final String spacer = "***";
+    public static final String IOError = "Általános bemeneti/kimeneti hiba lépett fel!";
+    public static final String urlSyntaxError = "A weboldal címzése nem megfelelő!";
 }

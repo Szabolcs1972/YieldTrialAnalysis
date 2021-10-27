@@ -23,13 +23,17 @@ public class NameCardDialog extends JDialog implements ActionListener, MouseList
     JLabel mail = new JLabel(Labels.mail,JLabel.CENTER);
     JLabel urlSzabolcs = new JLabel(Labels.urlSzabolcs,JLabel.CENTER);
     JLabel urlWebler = new JLabel(Labels.urlWebler,JLabel.CENTER);
+    JLabel urlCC0 = new JLabel(Labels.urlCC0,JLabel.CENTER);
+    JLabel urlPOI = new JLabel(Labels.urlPOI,JLabel.CENTER);
+    JLabel urlFOSS = new JLabel(Labels.urlFOSS,JLabel.CENTER);
+    JLabel urlGPL = new JLabel(Labels.urlGPL,JLabel.CENTER);
     Desktop desktop = null;
     URI uriMailTo = null;
     URI uri = null;
     Cursor hand = new Cursor(12);
 
     JPanel jPanel1 = new JPanel();
-    GridLayout gridPanel1 = new GridLayout(6, 1,10,10);
+    GridLayout gridPanel1 = new GridLayout(14, 1,10,10);
     GridLayout gridPanel2 = new GridLayout(3, 1,10,10);
 
 
@@ -61,6 +65,32 @@ public class NameCardDialog extends JDialog implements ActionListener, MouseList
         urlSzabolcs.setForeground(Color.BLUE);
         urlSzabolcs.addMouseListener(this);
         jPanel1.add(urlSzabolcs);
+
+        jPanel1.add(new JLabel(Labels.spacer,JLabel.CENTER));
+
+        jPanel1.add(new JLabel(Labels.aboutCC0,JLabel.CENTER));
+
+        urlCC0.setForeground(Color.BLUE);
+        urlCC0.addMouseListener(this);
+        jPanel1.add(urlCC0);
+
+        //2
+        jPanel1.add(new JLabel(Labels.aboutPOI,JLabel.CENTER));
+
+        urlPOI.setForeground(Color.BLUE);
+        urlPOI.addMouseListener(this);
+        jPanel1.add(urlPOI);
+
+        //3
+        jPanel1.add(new JLabel(Labels.aboutMySQLConnector,JLabel.CENTER));
+
+        urlFOSS.setForeground(Color.BLUE);
+        urlFOSS.addMouseListener(this);
+        jPanel1.add(urlFOSS);
+
+        urlGPL.setForeground(Color.BLUE);
+        urlGPL.addMouseListener(this);
+        jPanel1.add(urlGPL);
 
         jPanel1.add(new JLabel(Labels.spacer,JLabel.CENTER));
 
@@ -121,9 +151,9 @@ public class NameCardDialog extends JDialog implements ActionListener, MouseList
                     desktop.mail(uriMailTo);
 
                 } catch (IOException ioe) {
-                    ioe.printStackTrace();
+                    JOptionPane.showMessageDialog(this, Labels.IOError,Labels.error, JOptionPane.ERROR_MESSAGE);
                 } catch (URISyntaxException use) {
-                    use.printStackTrace();
+                    JOptionPane.showMessageDialog(this, Labels.urlSyntaxError,Labels.error, JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
@@ -138,9 +168,9 @@ public class NameCardDialog extends JDialog implements ActionListener, MouseList
                     desktop.browse(uri);
 
                 } catch (IOException ioe) {
-                    ioe.printStackTrace();
+                    JOptionPane.showMessageDialog(this, Labels.IOError,Labels.error, JOptionPane.ERROR_MESSAGE);
                 } catch (URISyntaxException use) {
-                    use.printStackTrace();
+                    JOptionPane.showMessageDialog(this, Labels.urlSyntaxError,Labels.error, JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
@@ -155,9 +185,76 @@ public class NameCardDialog extends JDialog implements ActionListener, MouseList
                     desktop.browse(uri);
 
                 } catch (IOException ioe) {
-                    ioe.printStackTrace();
+                    JOptionPane.showMessageDialog(this, Labels.IOError,Labels.error, JOptionPane.ERROR_MESSAGE);
                 } catch (URISyntaxException use) {
-                    use.printStackTrace();
+                    JOptionPane.showMessageDialog(this, Labels.urlSyntaxError,Labels.error, JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+        if (e.getSource() == urlCC0){
+            if (Desktop.isDesktopSupported()) desktop = Desktop.getDesktop();
+            if (desktop.isSupported(Desktop.Action.BROWSE)) {
+
+                try {
+
+                    uri = new URI(Labels.urlCC0);
+                    desktop.browse(uri);
+
+                } catch (IOException ioe) {
+                    JOptionPane.showMessageDialog(this, Labels.IOError,Labels.error, JOptionPane.ERROR_MESSAGE);
+                } catch (URISyntaxException use) {
+                    JOptionPane.showMessageDialog(this, Labels.urlSyntaxError,Labels.error, JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+
+        if (e.getSource() == urlPOI){
+            if (Desktop.isDesktopSupported()) desktop = Desktop.getDesktop();
+            if (desktop.isSupported(Desktop.Action.BROWSE)) {
+
+                try {
+
+                    uri = new URI(Labels.urlPOI);
+                    desktop.browse(uri);
+
+                } catch (IOException ioe) {
+                    JOptionPane.showMessageDialog(this, Labels.IOError,Labels.error, JOptionPane.ERROR_MESSAGE);
+                } catch (URISyntaxException use) {
+                    JOptionPane.showMessageDialog(this, Labels.urlSyntaxError,Labels.error, JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+
+        if (e.getSource() == urlFOSS){
+            if (Desktop.isDesktopSupported()) desktop = Desktop.getDesktop();
+            if (desktop.isSupported(Desktop.Action.BROWSE)) {
+
+                try {
+
+                    uri = new URI(Labels.urlFOSS);
+                    desktop.browse(uri);
+
+                } catch (IOException ioe) {
+                    JOptionPane.showMessageDialog(this, Labels.IOError,Labels.error, JOptionPane.ERROR_MESSAGE);
+                } catch (URISyntaxException use) {
+                    JOptionPane.showMessageDialog(this, Labels.urlSyntaxError,Labels.error, JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+
+        if (e.getSource() == urlGPL){
+            if (Desktop.isDesktopSupported()) desktop = Desktop.getDesktop();
+            if (desktop.isSupported(Desktop.Action.BROWSE)) {
+
+                try {
+
+                    uri = new URI(Labels.urlGPL);
+                    desktop.browse(uri);
+
+                } catch (IOException ioe) {
+                    JOptionPane.showMessageDialog(this, Labels.IOError,Labels.error, JOptionPane.ERROR_MESSAGE);
+                } catch (URISyntaxException use) {
+                    JOptionPane.showMessageDialog(this, Labels.urlSyntaxError,Labels.error, JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
@@ -181,6 +278,15 @@ public class NameCardDialog extends JDialog implements ActionListener, MouseList
         urlSzabolcs.setText(Labels.urlSzabolcsUnderLine);
         urlWebler.setCursor(hand);
         urlWebler.setText(Labels.urlWeblerUnderLine);
+
+        urlCC0.setCursor(hand);
+
+        urlPOI.setCursor(hand);
+
+        urlFOSS.setCursor(hand);
+
+        urlGPL.setCursor(hand);
+
     }
 
     @Override

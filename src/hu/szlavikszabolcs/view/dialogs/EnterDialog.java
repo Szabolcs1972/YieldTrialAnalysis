@@ -14,9 +14,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class EnterDialog extends JDialog implements ActionListener {
-    String passwordCode;
-    String title;
-    char[] password;
+    private String passwordCode;
+    private String title;
+    private char[] password;
     GridLayout grid1 = new GridLayout(2,1);
     JPanel pane1 = new JPanel();
     JPanel pane2 = new JPanel();
@@ -46,10 +46,6 @@ public class EnterDialog extends JDialog implements ActionListener {
         setLocation((dim.width/2 - this.getWidth()/2),(dim.height/2 - this.getHeight()/2));
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setVisible(true);
-    }
-
-    public char[] getPassword() {
-        return password;
     }
 
     public Insets getInsets(){

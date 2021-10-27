@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.*;
 import java.util.List;
 
@@ -37,6 +38,7 @@ public class MenuPoints extends JMenuBar implements ActionListener {
     JFileChooser jFileChooser;
     FileFilter filter = new FileNameExtensionFilter("Excel .xlsx file", "xlsx");
     File file;
+    FileInputStream fis;
     JMenuItem loading = new JMenuItem(Labels.menuItem);
     JMenuItem exit = new JMenuItem(Labels.menuItem2);
     JMenu firstMenu = new JMenu(Labels.menuPoint);
@@ -160,7 +162,7 @@ public class MenuPoints extends JMenuBar implements ActionListener {
 
                 try {
                     //obtaining input bytes from a file
-                    FileInputStream fis = new FileInputStream(file);
+                    fis = new FileInputStream(file);
                     //creating workbook instance that refers to .xlsx file
                     wb = new XSSFWorkbook(fis);
 
@@ -287,19 +289,52 @@ public class MenuPoints extends JMenuBar implements ActionListener {
                         entry = wrapper2.intValue();
                         //System.out.print(content[i][1] + " | ");
                         Double wrapper3 = (double) content[i][2];
-                        standardIntValue = wrapper3.intValue();
-                        if (standardIntValue == 0) standard = false;
-                        if (standardIntValue == 1) standard = true;
-                        //System.out.print(standard + " | ");
+                        if (wrapper3.intValue() == 1 || wrapper3.intValue() == 0) {
+                            standardIntValue = wrapper3.intValue();
+                            if (standardIntValue == 0) standard = false;
+                            if (standardIntValue == 1) standard = true;
+                            //System.out.print(standard + " | ");
+                        } else {
+                            fis.close();
+                            JOptionPane.showMessageDialog(gui, Labels.standardValueError, Labels.error, JOptionPane.ERROR_MESSAGE);
+                            loading.setEnabled(false);
+                            return;
+                        }
+                        String preload = (String) content[i][3];
+                        if (!preload.isEmpty()){
                         name = (String) content[i][3];
                         //System.out.print(content[i][3] + " | ");
+                        } else {
+                            fis.close();
+                            JOptionPane.showMessageDialog(gui, Labels.nameValueError, Labels.error, JOptionPane.ERROR_MESSAGE);
+                            loading.setEnabled(false);
+                            return;
+                        }
+
+
                         Double wrapper4 = (double) content[i][4];
                         rep = wrapper4.intValue();
                         //System.out.print(content[i][4] + " | ");
-                        plotWeight = (double) content[i][5];
-                        //System.out.print(content[i][5] + " | ");
-                        moisture = (double) content[i][6];
-                        //System.out.print(content[i][6] + " | ");
+                        if ((double) content[i][5] > 0){
+                            plotWeight = (double) content[i][5];
+                            //System.out.print(content[i][5] + " | ");
+                        }
+                        else {
+                            fis.close();
+                            JOptionPane.showMessageDialog(gui, Labels.plotWeightValueError, Labels.error, JOptionPane.ERROR_MESSAGE);
+                            loading.setEnabled(false);
+                            return;
+                        }
+                        if ((double) content[i][6] > 0) {
+                            moisture = (double) content[i][6];
+                            //System.out.print(content[i][6] + " | ");
+                        }
+                        else {
+                            fis.close();
+                            JOptionPane.showMessageDialog(gui, Labels.moistureValueError, Labels.error, JOptionPane.ERROR_MESSAGE);
+                            loading.setEnabled(false);
+                            return;
+                        }
                         Double wrapper5 = (double) content[i][7];
                         year = wrapper5.intValue();
                         //System.out.print(content[i][7] + " | ");
@@ -311,14 +346,23 @@ public class MenuPoints extends JMenuBar implements ActionListener {
                         //System.out.println(r);
                         rawDataList.add(r);
                     }
+                    fis.close();
+
+
                     JOptionPane.showMessageDialog(gui, Labels.fileDataLoadSuccess, Labels.information, JOptionPane.INFORMATION_MESSAGE);
                     //data has been loaded, switch on yield calculation in the menu
                     yieldCalculation.setEnabled(true);
                     //switch off the menu of data load to avoid confusion
                     loading.setEnabled(false);
                 } catch (Exception exception) {
-                    JOptionPane.showMessageDialog(gui, exception.getMessage(), Labels.error, JOptionPane.ERROR_MESSAGE);
-
+                    try {
+                        fis.close();
+                    } catch (IOException ex) {
+                        JOptionPane.showMessageDialog(gui, ex.getMessage() + '\n' + Labels.IOError, Labels.error, JOptionPane.ERROR_MESSAGE);
+                    }
+                    JOptionPane.showMessageDialog(gui, exception.getMessage() + '\n' + Labels.fileDataLoadFailure, Labels.error, JOptionPane.ERROR_MESSAGE);
+                    loading.setEnabled(false);
+                    return;
                 }
 
                 //FileNyitasPanel fp = new FileNyitasPanel(rawDataList);
@@ -339,7 +383,7 @@ public class MenuPoints extends JMenuBar implements ActionListener {
 
 
             gui.setActualContent(new GetPlotSizePanel(gui, rawDataList));
-            computedDataList = GetPlotSizePanel.getComputedDataList();
+            //computedDataList = GetPlotSizePanel.getComputedDataList();
             //summaryStatistics.setEnabled(true);
             yieldCalculation.setEnabled(false);
 
@@ -353,6 +397,7 @@ public class MenuPoints extends JMenuBar implements ActionListener {
         }
         if (e.getActionCommand().equals(Labels.menuItem5)) {
 
+                computedDataList = GetPlotSizePanel.getComputedDataList();
                 if (!computedDataList.isEmpty()) {
                 Map<Double,String> averages = new TreeMap<>(Comparator.reverseOrder());
                 Map<String,Double> deviation = new TreeMap<>();
@@ -413,9 +458,17 @@ public class MenuPoints extends JMenuBar implements ActionListener {
                     //System.out.println("A termés négyzetre emelve: " + Math.pow(sumYields,2));
                     deviationS = Math.sqrt( (sumSquares- ( Math.pow(sumYields,2.0)  / counter) ) / (counter-1));
                     //System.out.println("A fajta szórása: " + deviationS);
-                    averages.put((double) (Math.round((sumYields/counter)*1000))/1000,s);
-                    deviation.put(s,( (double) (Math.round(deviationS*1000))/1000));
+
+                    //before test of the System:
+                    //averages.put((double) (Math.round((sumYields/counter)*1000))/1000,s);
+                    //deviation.put(s,( (double) (Math.round(deviationS*1000))/1000));
+
+                    //after the test of the System, without round, it is more accurate
+                    averages.put((double) sumYields/counter,s);
+                    deviation.put(s,deviationS);
+
                     coefficientOfVariation.put(s,( (double) ((Math.round (((deviationS/(sumYields/counter))*100) * 10)))/10));
+                    //coefficientOfVariation.put(s,( (double) (deviationS/(sumYields/counter))));
                     //bug fix: it is not good to calculate here, the results of standards were false, see line 419-429
                     //percentageOfStandards.put(s,( (double)  (Math.round ((((sumYields/counter)/(sumYieldsofStandards/counterOfStandards))*10000)))/10));
                     repetitions.put(s,counter);

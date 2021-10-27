@@ -64,7 +64,7 @@ public class PlantBreedingDAOImpl implements PlantBreedingDAO {
             if (countAffectedRows == computedData.size()){
                 messageBack = "true";
             }
-
+            conn.close();
         } catch (SQLException throwables) {
 
             messageBack = Labels.error + "\n" + throwables.getMessage();
@@ -106,6 +106,8 @@ public class PlantBreedingDAOImpl implements PlantBreedingDAO {
                 RawData rd = new RawData(int1,int2,standard,s,int3,d1,d2,d3,int4,s2);
                 this.showDataList.add(rd);
             }
+            conn.close();
+
         } catch (SQLException | NullPointerException throwables) {
 
             JOptionPane.showMessageDialog(gui,Labels.error + '\n' + throwables.getMessage(),Labels.error,JOptionPane.ERROR_MESSAGE );
