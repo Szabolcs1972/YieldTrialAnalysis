@@ -49,7 +49,7 @@ public class MenuPoints extends JMenuBar implements ActionListener {
     JMenu thirdMenu = new JMenu(Labels.menuPoint3);
     JMenuItem about = new JMenuItem(Labels.menuItem7);
     JMenuItem info = new JMenuItem(Labels.menuItem6);
-    JMenu config = new JMenu(Labels.menuPoint4);
+    public static JMenu config = new JMenu(Labels.menuPoint4);
     JMenuItem configMenuItem = new JMenuItem(Labels.menuPoint4);
     JMenu help = new JMenu(Labels.menuPoint5);
 
@@ -390,9 +390,9 @@ public class MenuPoints extends JMenuBar implements ActionListener {
         }
         if (e.getActionCommand().equals(Labels.menuItem4)) {
 
+            showDataList.clear();
             showDataList = gui.getController().dao.getDataPoint();
             gui.setActualContent(new ShowDatabase(new TableSchemaComputed(showDataList)));
-
 
         }
         if (e.getActionCommand().equals(Labels.menuItem5)) {

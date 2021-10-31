@@ -70,8 +70,6 @@ public class PlantBreedingGUI extends JFrame {
         window.setSize(800,600);//in case somebody is using old monitor
         window.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-
-
         window.setIconImage(icon);
         window.setJMenuBar(mp);
         window.setContentPane(new InformationPanel());
@@ -109,4 +107,17 @@ public class PlantBreedingGUI extends JFrame {
     public static Image getIcon() {
         return icon;
     }
+
+    public static void setDatabaseLink(String databaseLink) {
+        PlantBreedingGUI.databaseLink = databaseLink;
+    }
+
+    public static void setDatabaseUser(String databaseUser) {
+        PlantBreedingGUI.databaseUser = databaseUser;
+    }
+
+    public static void setDataBasePassword(String dataBasePassword) {
+        PlantBreedingGUI.dataBasePassword = dataBasePassword;
+    }
+
 }

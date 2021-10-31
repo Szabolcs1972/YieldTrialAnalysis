@@ -69,15 +69,18 @@ public class Labels {
     public static final String fileDataLoadFailure = "<html>Hiba lépett fel az adatok betöltése során! Indítsd újra a programot!</html>";
 
     //configuration
+
+    public static final String warning = "Figyelmeztetés!";
     public static final String configFileNotFound = "A konfigurációs fájl nem található! Viszontlátásra!";
     public static final String writeIOException = "Írási hiba!";
     public static final String saveConfig = "A beállítások mentése";
     public static final String configDialogTitle = "Beállítások";
     public static final String userEntrance = "<html><strong><u>Belépési azonosító</u></strong></html>";
     public static final String databaseDetails = "<html><strong><u>Adatbázis azonosítók</u></strong></html>";
-    public static final String databaseLink = "Adatbázis url (pl.: jdbc:mysql://localhost:3306/mydatabase)";
+    public static final String databaseLink = "Adatbázis url";
     public static final String databaseUser = "Adatbázis felhasználónév";
     public static final String databasePassWord = "Adatbázis jelszó";
+    public static final String emptyConfigFields = "Az adatbázis jelszó kivételével, a mezők nem lehetnek üresek!";
 
     //about
     public static final String aboutOKJ = "OKJ Vizsgafeladat";

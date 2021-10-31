@@ -1,5 +1,6 @@
 package hu.szlavikszabolcs.view.dialogs;
 
+import hu.szlavikszabolcs.view.MenuPoints;
 import hu.szlavikszabolcs.view.PlantBreedingGUI;
 import org.apache.commons.codec.digest.DigestUtils;
 import hu.szlavikszabolcs.view.bean.Labels;
@@ -16,10 +17,11 @@ public class ConfigDialog extends JDialog implements ActionListener {
     private String dataBaseLink;
     private String dataBaseUser;
     private String dataBasePassword;
+    private char[] pwChars;
 
     JPanel jPanel1 = new JPanel();
-    JTextField passWordTextField = new JTextField(15);
-    JTextField dataBaseLinkTextField = new JTextField(15);
+    JPasswordField passWordTextField = new JPasswordField(15);
+    JTextField dataBaseLinkTextField = new JTextField(20);
 
     JTextField dataBaseUserTextField = new JTextField(15);
     JTextField dataBasePassWordTextField = new JTextField(15);
@@ -73,9 +75,8 @@ public class ConfigDialog extends JDialog implements ActionListener {
 
         setIconImage(PlantBreedingGUI.getIcon());
 
-        setVisible(true);
-
         setModal(true);
+
         pack();
         setLocation((dim.width/2 - this.getWidth()/2),(dim.height/2 - this.getHeight()/2));
         setVisible(true);
@@ -90,7 +91,8 @@ public class ConfigDialog extends JDialog implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == saveButton){
 
-            passWord = (passWordTextField.getText());
+            pwChars = passWordTextField.getPassword();
+            passWord = new String(pwChars);
             dataBaseLink = dataBaseLinkTextField.getText();
 
             dataBaseUser = dataBaseUserTextField.getText();
@@ -98,8 +100,11 @@ public class ConfigDialog extends JDialog implements ActionListener {
             dataBasePassword = dataBasePassWordTextField.getText();
 
             //System.out.println("Password length: " + password.length);
+            // before test - We have asked database password. We have to allow empty password, if there is no password
+            //if (!passWord.isEmpty() && !dataBaseLink.isEmpty() && !dataBaseUser.isEmpty() && !dataBasePassword.isEmpty()){
 
-            if (!passWord.isEmpty() && !dataBaseLink.isEmpty() && !dataBaseUser.isEmpty() && !dataBasePassword.isEmpty()){
+            //after test:
+            if (!passWord.isEmpty() && !dataBaseLink.isEmpty() && !dataBaseUser.isEmpty()){
 
                 String hashPassword = DigestUtils.sha256Hex(EnterDialog.getSalt()+passWord);
 
@@ -109,17 +114,32 @@ public class ConfigDialog extends JDialog implements ActionListener {
                     printWriter.println(hashPassword);
                     printWriter.println(dataBaseLink);
                     printWriter.println(dataBaseUser);
-                    printWriter.println(dataBasePassword);
+                    if (!dataBasePassword.isEmpty()){
+                        printWriter.println(dataBasePassword);
+                    } else {
+                        //if the database password field is empty, write new line in the file
+                        printWriter.print('\n');
+                    }
                     printWriter.close();
+                    PlantBreedingGUI.setDatabaseLink(dataBaseLink);
+                    PlantBreedingGUI.setDatabaseUser(dataBaseUser);
+                    PlantBreedingGUI.setDataBasePassword(dataBasePassword);
+
                 } catch (FileNotFoundException exception){
                     JOptionPane.showMessageDialog(this, Labels.configFileNotFound + "\n" + exception.getMessage(),Labels.error,JOptionPane.ERROR_MESSAGE);
                 }
 
             } else {
-                JOptionPane.showMessageDialog(this,Labels.emptyField,Labels.failToPass,JOptionPane.ERROR_MESSAGE);
-                System.exit(0);
-            }
+                JOptionPane.showMessageDialog(this,Labels.emptyConfigFields,Labels.warning,JOptionPane.WARNING_MESSAGE);
+                //System.exit(0); before test
 
+                //after test - clear the variables for the next try
+                passWord = "";
+                dataBaseLink = "";
+                dataBaseUser = "";
+                dataBasePassword = "";
+                return;//let's allow the user to fill the fields
+            }
             this.setVisible(false);
         }
 

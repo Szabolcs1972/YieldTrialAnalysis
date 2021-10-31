@@ -84,6 +84,7 @@ public class PlantBreedingDAOImpl implements PlantBreedingDAO {
         try {
             //Class.forName("org.sqlite.JDBC");
             //Class.forName("com.mysql.jdbc.Driver");
+            //System.out.println(PlantBreedingGUI.getDatabaseLink() + " " + PlantBreedingGUI.getDatabaseUser() + " " + PlantBreedingGUI.getDataBasePassword());
 
             conn = DriverManager.getConnection(PlantBreedingGUI.getDatabaseLink(),PlantBreedingGUI.getDatabaseUser(),PlantBreedingGUI.getDataBasePassword());
             st = conn.createStatement();

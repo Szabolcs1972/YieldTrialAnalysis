@@ -83,6 +83,8 @@ public class EnterDialog extends JDialog implements ActionListener {
             if (password.length != 0){
 
                 String hashPassword = DigestUtils.sha256Hex(getSalt()+passwordString);
+                //System.out.println("Titkosított jelszó: " + hashPassword);
+
                 if (hashPassword.equals(passwordCode)){
                     setVisible(false);
                 } else {
