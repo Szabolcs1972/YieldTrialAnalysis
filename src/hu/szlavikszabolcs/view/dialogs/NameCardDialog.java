@@ -27,13 +27,15 @@ public class NameCardDialog extends JDialog implements ActionListener, MouseList
     JLabel urlPOI = new JLabel(Labels.urlPOI,JLabel.CENTER);
     JLabel urlFOSS = new JLabel(Labels.urlFOSS,JLabel.CENTER);
     JLabel urlGPL = new JLabel(Labels.urlGPL,JLabel.CENTER);
+    JLabel urlBSD3 = new JLabel(Labels.urlBSD3,JLabel.CENTER);
+    JLabel urlMIT = new JLabel(Labels.urlMIT,JLabel.CENTER);
     Desktop desktop = null;
     URI uriMailTo = null;
     URI uri = null;
     Cursor hand = new Cursor(12);
 
     JPanel jPanel1 = new JPanel();
-    GridLayout gridPanel1 = new GridLayout(14, 1,10,10);
+    GridLayout gridPanel1 = new GridLayout(17, 1,10,10);
     GridLayout gridPanel2 = new GridLayout(3, 1,10,10);
 
 
@@ -91,6 +93,18 @@ public class NameCardDialog extends JDialog implements ActionListener, MouseList
         urlGPL.setForeground(Color.BLUE);
         urlGPL.addMouseListener(this);
         jPanel1.add(urlGPL);
+
+        //4
+        jPanel1.add(new JLabel(Labels.aboutLaunch4j,JLabel.CENTER));
+
+        urlBSD3.setForeground(Color.BLUE);
+        urlBSD3.addMouseListener(this);
+        jPanel1.add(urlBSD3);
+
+        urlMIT.setForeground(Color.BLUE);
+        urlMIT.addMouseListener(this);
+        jPanel1.add(urlMIT);
+
 
         jPanel1.add(new JLabel(Labels.spacer,JLabel.CENTER));
 
@@ -259,6 +273,39 @@ public class NameCardDialog extends JDialog implements ActionListener, MouseList
             }
         }
 
+        if (e.getSource() == urlBSD3){
+            if (Desktop.isDesktopSupported()) desktop = Desktop.getDesktop();
+            if (desktop.isSupported(Desktop.Action.BROWSE)) {
+
+                try {
+
+                    uri = new URI(Labels.urlBSD3);
+                    desktop.browse(uri);
+
+                } catch (IOException ioe) {
+                    JOptionPane.showMessageDialog(this, Labels.IOError,Labels.error, JOptionPane.ERROR_MESSAGE);
+                } catch (URISyntaxException use) {
+                    JOptionPane.showMessageDialog(this, Labels.urlSyntaxError,Labels.error, JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+
+        if (e.getSource() == urlMIT){
+            if (Desktop.isDesktopSupported()) desktop = Desktop.getDesktop();
+            if (desktop.isSupported(Desktop.Action.BROWSE)) {
+
+                try {
+
+                    uri = new URI(Labels.urlMIT);
+                    desktop.browse(uri);
+
+                } catch (IOException ioe) {
+                    JOptionPane.showMessageDialog(this, Labels.IOError,Labels.error, JOptionPane.ERROR_MESSAGE);
+                } catch (URISyntaxException use) {
+                    JOptionPane.showMessageDialog(this, Labels.urlSyntaxError,Labels.error, JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
     }
 
     @Override
@@ -286,6 +333,10 @@ public class NameCardDialog extends JDialog implements ActionListener, MouseList
         urlFOSS.setCursor(hand);
 
         urlGPL.setCursor(hand);
+
+        urlBSD3.setCursor(hand);
+
+        urlMIT.setCursor(hand);
 
     }
 

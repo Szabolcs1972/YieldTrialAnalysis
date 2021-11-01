@@ -98,6 +98,10 @@ public class Labels {
     public static final String urlFOSS = "https://oss.oracle.com/licenses/universal-foss-exception/";
     public static final String urlGPL = "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html";
 
+    public static final String aboutLaunch4j = "Launch4j 3.14, License: BSD-3-Clause, MIT License";
+    public static final String urlBSD3 = "https://opensource.org/licenses/BSD-3-Clause/";
+    public static final String urlMIT = "https://opensource.org/licenses/mit-license.html";
+
     public static final String aboutWebler = "Köszönet, a Webler Oktatóstudió részére!";
     public static final String urlWebler = "https://webler.hu";
     public static final String urlWeblerUnderLine = "<html><u>https://webler.hu</u></html>";
