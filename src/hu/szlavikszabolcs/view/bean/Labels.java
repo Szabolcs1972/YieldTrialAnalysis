@@ -83,6 +83,7 @@ public class Labels {
     public static final String emptyConfigFields = "Az adatbázis jelszó kivételével, a mezők nem lehetnek üresek!";
 
     //about
+    public static final String homeURL = "https://www.szlavikszabolcs.hu/KiserletElemzo/FelhasznaloiDokumentacio2.htm";
     public static final String aboutOKJ = "OKJ Vizsgafeladat";
     public static final String aboutSzabolcs = "Dr. Szlávik Szabolcs";
     public static final String mail = "szabolcsszlavik@gmail.com";

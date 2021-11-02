@@ -20,7 +20,7 @@ public class InformationPanel extends JPanel implements ActionListener {
     public InformationPanel(){
 
         try {
-            jEditorPane = new JEditorPane("https://www.szlavikszabolcs.hu/KiserletElemzo/FelhasznaloiDokumentacio.htm");
+            jEditorPane = new JEditorPane(Labels.homeURL);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this, Labels.noHTML,Labels.error,JOptionPane.ERROR_MESSAGE);
         }
