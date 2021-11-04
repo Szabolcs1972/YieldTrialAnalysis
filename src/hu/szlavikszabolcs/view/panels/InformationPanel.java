@@ -3,7 +3,6 @@ package hu.szlavikszabolcs.view.panels;
 import hu.szlavikszabolcs.view.bean.Labels;
 
 import javax.swing.*;
-import javax.swing.table.AbstractTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,7 +33,6 @@ public class InformationPanel extends JPanel implements ActionListener {
 
 
     }
-
 
     @Override
     public void actionPerformed(ActionEvent e) {

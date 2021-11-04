@@ -1,11 +1,8 @@
 package hu.szlavikszabolcs.view.dialogs;
 
-import hu.szlavikszabolcs.view.MenuPoints;
 import hu.szlavikszabolcs.view.PlantBreedingGUI;
 import org.apache.commons.codec.digest.DigestUtils;
 import hu.szlavikszabolcs.view.bean.Labels;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -117,7 +114,7 @@ public class ConfigDialog extends JDialog implements ActionListener {
                     if (!dataBasePassword.isEmpty()){
                         printWriter.println(dataBasePassword);
                     } else {
-                        //if the database password field is empty, write new line in the file
+                        //if the database password field is empty, write new line into the file
                         printWriter.print('\n');
                     }
                     printWriter.close();

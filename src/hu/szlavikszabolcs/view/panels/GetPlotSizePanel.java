@@ -17,7 +17,7 @@ import java.util.List;
 public class GetPlotSizePanel extends JPanel implements ActionListener {
     public PlantBreedingGUI gui;
 
-    //boolean modal;
+
     JPanel contentPane = new JPanel();
     JPanel jPanel1 = new JPanel();
     JPanel jPanel2 = new JPanel();
@@ -62,9 +62,7 @@ public class GetPlotSizePanel extends JPanel implements ActionListener {
 
     }
 
-    public double getPlotSize(){
-        return plotSize;
-    }
+
     public static List<RawData> getComputedDataList(){
         return computedDataList;
     }
@@ -104,7 +102,7 @@ public class GetPlotSizePanel extends JPanel implements ActionListener {
                     raw.setYield((double) ((((raw.getPlotWeight() * ((100 - raw.getMoisture()) / 100)) / ((100 - setMoistureTo) / 100)) / plotSize) * 10));
                     computedDataList.add(raw);
                 }
-                //rawDataList.clear();
+
                 gui.setActualContent(new SaveComputedDataPanel(computedDataList, new TableSchemaComputed(computedDataList)));
 
                 //according to the data of yields - Summary Statistics can be made

@@ -84,11 +84,6 @@ public class SummaryStatisticsPanel extends JPanel implements ActionListener, Mo
         table.addMouseListener(this);
 
 
-        //smart codes from others to manage table:
-        //table.getColumnModel().getColumn(col).setPreferredWidth(width);
-        //table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        //table.setPreferredScrollableViewportSize(table.getPreferredSize());
-
         scrollPane = new JScrollPane(table);
 
 

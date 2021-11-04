@@ -1,7 +1,5 @@
 package hu.szlavikszabolcs.view.bean;
 
-import javax.swing.*;
-
 public class Labels {
     //labels for Login
     public static final String enter = "Belépés a programba";
@@ -102,6 +100,9 @@ public class Labels {
     public static final String aboutLaunch4j = "Launch4j 3.14, License: BSD-3-Clause, MIT License";
     public static final String urlBSD3 = "https://opensource.org/licenses/BSD-3-Clause/";
     public static final String urlMIT = "https://opensource.org/licenses/mit-license.html";
+
+    public static final String aboutOracle = "<html><span style=color:red>ORACLE</span> Java</html>";
+    public static final String urlJava = "http://java.com/licensereadme";
 
     public static final String aboutWebler = "Köszönet, a Webler Oktatóstudió részére!";
     public static final String urlWebler = "https://webler.hu";

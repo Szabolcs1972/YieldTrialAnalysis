@@ -25,7 +25,7 @@ public class ShowDatabase extends JPanel implements ActionListener, MouseListene
     public ShowDatabase(AbstractTableModel abstractTableModel) {
 
         this.abstractTableModel = abstractTableModel;
-        //setLocale(new Locale("hu","Hungary"));
+
         setLayout(new BorderLayout());
 
         table = new JTable(abstractTableModel){
@@ -63,11 +63,6 @@ public class ShowDatabase extends JPanel implements ActionListener, MouseListene
         table.setAutoCreateRowSorter(true);
         table.addMouseListener(this);
 
-
-        //smart codes from others to manage table:
-        //table.getColumnModel().getColumn(col).setPreferredWidth(width);
-        //table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        //table.setPreferredScrollableViewportSize(table.getPreferredSize());
 
         scrollPane = new JScrollPane(table);
 

@@ -4,14 +4,10 @@ import hu.szlavikszabolcs.view.PlantBreedingGUI;
 import org.apache.commons.codec.digest.DigestUtils;
 import hu.szlavikszabolcs.view.bean.Labels;
 import hu.szlavikszabolcs.view.bean.Salt;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 
 public class EnterDialog extends JDialog implements ActionListener {
     private String passwordCode;

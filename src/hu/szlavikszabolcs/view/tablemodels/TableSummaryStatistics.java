@@ -17,10 +17,6 @@ public class TableSummaryStatistics extends AbstractTableModel {
 
     }
 
-    public List<SummaryStatistics> getStatistics(){
-        return statistics;
-    }
-
     @Override
     public int getRowCount() {
         return statistics.size();

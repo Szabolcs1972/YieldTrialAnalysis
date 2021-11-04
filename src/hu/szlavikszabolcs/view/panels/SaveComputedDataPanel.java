@@ -35,7 +35,7 @@ public class SaveComputedDataPanel extends JPanel implements ActionListener {
         this.abstractTableModel = abstractTableModel;
 
         setLayout(new BorderLayout());
-        //contentPane.setBorder(new EmptyBorder(10,10,10,10));
+
         table = new JTable(abstractTableModel){
 
             //Source: https://docs.oracle.com/javase/tutorial/uiswing/components/table.html
@@ -70,7 +70,7 @@ public class SaveComputedDataPanel extends JPanel implements ActionListener {
         };
         table.setAutoCreateRowSorter(true);
         scrollPane = new JScrollPane(table);
-        //add(scrollPane);
+
         add(scrollPane,BorderLayout.CENTER);
 
         jPanel.setLayout(flowpane);

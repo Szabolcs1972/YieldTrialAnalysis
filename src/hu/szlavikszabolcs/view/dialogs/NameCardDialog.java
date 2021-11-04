@@ -29,13 +29,15 @@ public class NameCardDialog extends JDialog implements ActionListener, MouseList
     JLabel urlGPL = new JLabel(Labels.urlGPL,JLabel.CENTER);
     JLabel urlBSD3 = new JLabel(Labels.urlBSD3,JLabel.CENTER);
     JLabel urlMIT = new JLabel(Labels.urlMIT,JLabel.CENTER);
+    JLabel urlJava = new JLabel(Labels.urlJava,JLabel.CENTER);
+
     Desktop desktop = null;
     URI uriMailTo = null;
     URI uri = null;
     Cursor hand = new Cursor(12);
 
     JPanel jPanel1 = new JPanel();
-    GridLayout gridPanel1 = new GridLayout(17, 1,10,10);
+    GridLayout gridPanel1 = new GridLayout(19, 1,10,10);
     GridLayout gridPanel2 = new GridLayout(3, 1,10,10);
 
 
@@ -68,22 +70,24 @@ public class NameCardDialog extends JDialog implements ActionListener, MouseList
         urlSzabolcs.addMouseListener(this);
         jPanel1.add(urlSzabolcs);
 
+        //spacer
         jPanel1.add(new JLabel(Labels.spacer,JLabel.CENTER));
 
+        //license #1
         jPanel1.add(new JLabel(Labels.aboutCC0,JLabel.CENTER));
 
         urlCC0.setForeground(Color.BLUE);
         urlCC0.addMouseListener(this);
         jPanel1.add(urlCC0);
 
-        //2
+        //license #2
         jPanel1.add(new JLabel(Labels.aboutPOI,JLabel.CENTER));
 
         urlPOI.setForeground(Color.BLUE);
         urlPOI.addMouseListener(this);
         jPanel1.add(urlPOI);
 
-        //3
+        //license #3
         jPanel1.add(new JLabel(Labels.aboutMySQLConnector,JLabel.CENTER));
 
         urlFOSS.setForeground(Color.BLUE);
@@ -94,7 +98,7 @@ public class NameCardDialog extends JDialog implements ActionListener, MouseList
         urlGPL.addMouseListener(this);
         jPanel1.add(urlGPL);
 
-        //4
+        //license #4
         jPanel1.add(new JLabel(Labels.aboutLaunch4j,JLabel.CENTER));
 
         urlBSD3.setForeground(Color.BLUE);
@@ -105,7 +109,15 @@ public class NameCardDialog extends JDialog implements ActionListener, MouseList
         urlMIT.addMouseListener(this);
         jPanel1.add(urlMIT);
 
+        //license #5
 
+        jPanel1.add(new JLabel(Labels.aboutOracle,JLabel.CENTER));
+
+        urlJava.setForeground(Color.BLUE);
+        urlJava.addMouseListener(this);
+        jPanel1.add(urlJava);
+
+        //spacer
         jPanel1.add(new JLabel(Labels.spacer,JLabel.CENTER));
 
         jPanel2.setLayout(gridPanel2);
@@ -306,6 +318,23 @@ public class NameCardDialog extends JDialog implements ActionListener, MouseList
                 }
             }
         }
+
+        if (e.getSource() == urlJava){
+            if (Desktop.isDesktopSupported()) desktop = Desktop.getDesktop();
+            if (desktop.isSupported(Desktop.Action.BROWSE)) {
+
+                try {
+
+                    uri = new URI(Labels.urlJava);
+                    desktop.browse(uri);
+
+                } catch (IOException ioe) {
+                    JOptionPane.showMessageDialog(this, Labels.IOError,Labels.error, JOptionPane.ERROR_MESSAGE);
+                } catch (URISyntaxException use) {
+                    JOptionPane.showMessageDialog(this, Labels.urlSyntaxError,Labels.error, JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
     }
 
     @Override
@@ -337,6 +366,8 @@ public class NameCardDialog extends JDialog implements ActionListener, MouseList
         urlBSD3.setCursor(hand);
 
         urlMIT.setCursor(hand);
+
+        urlJava.setCursor(hand);
 
     }
 

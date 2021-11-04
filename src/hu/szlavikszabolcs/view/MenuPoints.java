@@ -58,11 +58,6 @@ public class MenuPoints extends JMenuBar implements ActionListener {
     int columnNumber = 0;
     String[] columnLabels = new String[9];
 
-    double plotSize;
-    double setMoistureTo;
-    private Object LocaleNames_hu;
-
-
     public MenuPoints(PlantBreedingGUI gui) {
         super();
         this.gui = gui;
@@ -95,38 +90,9 @@ public class MenuPoints extends JMenuBar implements ActionListener {
         about.addActionListener(this);
         add(help);
 
-
-        //createMenuPoint(Cimkek.menuPont, Cimkek.menuElem, Cimkek.menuElem2);
-        /*
-        this.add(createMenuPoint(Labels.menuPoint, Labels.menuItem, Labels.menuItem2));
-        this.add(createMenuPoint(Labels.menuPoint2, Labels.menuItem3, Labels.menuItem5));
-        this.add(createMenuPoint(Labels.menuPoint3, Labels.menuItem4));
-        this.add(createMenuPoint(Labels.menuPoint4, Labels.menuItem6));
-        */
-
     }
 
-    /*
-    public JMenu createMenuPoint(String menu, String... elemek) {
-
-        JMenu menuPlantBreeding = new JMenu(menu);
-
-
-        for (int i = 0; i < elemek.length; i++) {
-            JMenuItem menuItem = new JMenuItem(elemek[i]);
-            menuPlantBreeding.add(menuItem);
-            menuItem.addActionListener(this);
-
-            //System.out.println("MEnűelem: " + elemek[i]);
-
-        }
-
-
-        return menuPlantBreeding;
-    }
-    */
-
-        //switch on SummaryStatistics menuItem from SaveComputedDataPanel
+      //switch on SummaryStatistics menuItem from SaveComputedDataPanel
       public static void setSummaryStatistics(Boolean status) {
         MenuPoints.summaryStatistics.setEnabled(status);
     }
@@ -157,6 +123,7 @@ public class MenuPoints extends JMenuBar implements ActionListener {
 
                 // this is for .xls files
                 //HSSFWorkbook wb = null;
+
                 // and this one for .xlsx files:
                 XSSFWorkbook wb = null;
 
@@ -365,10 +332,7 @@ public class MenuPoints extends JMenuBar implements ActionListener {
                     return;
                 }
 
-                //FileNyitasPanel fp = new FileNyitasPanel(rawDataList);
-                //gui.getWindow().setContentPane(new FileNyitasPanel(gui,rawDataList));
                 gui.setActualContent(new FileOpenPanel(new TableSchemaInputData(rawDataList)));
-                //gui.setContentPane(new FileOpenPanel(gui,new TableSchemaInputData(rawDataList)));
 
 
             }
@@ -383,8 +347,6 @@ public class MenuPoints extends JMenuBar implements ActionListener {
 
 
             gui.setActualContent(new GetPlotSizePanel(gui, rawDataList));
-            //computedDataList = GetPlotSizePanel.getComputedDataList();
-            //summaryStatistics.setEnabled(true);
             yieldCalculation.setEnabled(false);
 
         }
@@ -543,14 +505,10 @@ public class MenuPoints extends JMenuBar implements ActionListener {
                     //this menu switched off to avoid further confusion
                     summaryStatistics.setEnabled(false);
 
-                //gui.setActualContent(new SaveComputedDataPanel(rawDataList, new TableSchemaComputed(rawDataList)));
             } else {
                 JOptionPane.showMessageDialog(gui, Labels.noDataError,Labels.error,JOptionPane.ERROR_MESSAGE);
                 return;
             }
-
-            //gui.setActualContent(new SummaryStatistics(computedDataList));
-
 
         }
 

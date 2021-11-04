@@ -3,8 +3,6 @@ package hu.szlavikszabolcs.model;
 import hu.szlavikszabolcs.view.bean.Labels;
 import hu.szlavikszabolcs.view.PlantBreedingGUI;
 import hu.szlavikszabolcs.view.bean.RawData;
-import hu.szlavikszabolcs.view.bean.Salt;
-
 import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,10 +12,7 @@ public class PlantBreedingDAOImpl implements PlantBreedingDAO {
     private PlantBreedingGUI gui;
     List<RawData> rawDataList = new ArrayList<>();
     List<RawData> showDataList = new ArrayList<>();
-    Salt codes = new Salt();
 
-    //private static final String DATABASE_FILE_SQLITE = "jdbc:sqlite://home//szlavik//Letöltések//sqlite//sqlite-tools-linux-x86-3360000//NovenyFajta.db";
-    //private static final String DATABASE_FILE_MySQL_URL = PlantBreedingGUI.getDatabaseLink();
     private static final String DATABASE_QUERY = "SELECT * FROM `datapoints`;";
     private static final String ADD_NEW_DATAPOINT = "INSERT INTO `datapoints` (plotNumber,entryNumber,standard,name,repNumber,plotWeight,moisture,yield,year,locations) VALUES (?,?,?,?,?,?,?,?,?,?);";
     int countAffectedRows = 0;
@@ -32,8 +27,6 @@ public class PlantBreedingDAOImpl implements PlantBreedingDAO {
 
 
         try {
-            //Class.forName("org.sqlite.JDBC");
-            //Class.forName("com.mysql.jdbc.Driver");
 
             conn = DriverManager.getConnection(PlantBreedingGUI.getDatabaseLink(),PlantBreedingGUI.getDatabaseUser(), PlantBreedingGUI.getDataBasePassword());
 
@@ -57,6 +50,7 @@ public class PlantBreedingDAOImpl implements PlantBreedingDAO {
             // eltároljuk
             int affectedRows = pst.executeUpdate();
             //System.out.println("AffectedRow = " + affectedRows);
+
             if (affectedRows == 1) {
                 countAffectedRows++;
             }
@@ -82,14 +76,12 @@ public class PlantBreedingDAOImpl implements PlantBreedingDAO {
         this.rawDataList.clear();
 
         try {
-            //Class.forName("org.sqlite.JDBC");
-            //Class.forName("com.mysql.jdbc.Driver");
-            //System.out.println(PlantBreedingGUI.getDatabaseLink() + " " + PlantBreedingGUI.getDatabaseUser() + " " + PlantBreedingGUI.getDataBasePassword());
 
             conn = DriverManager.getConnection(PlantBreedingGUI.getDatabaseLink(),PlantBreedingGUI.getDatabaseUser(),PlantBreedingGUI.getDataBasePassword());
             st = conn.createStatement();
             ResultSet rs = st.executeQuery(DATABASE_QUERY);
             //System.out.println("Result set" + rs.toString());
+
             while(rs.next()) {
 
                 int int1 = rs.getInt("plotNumber");
