@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact name="YieldTrialAnalysis">
+    <output-path>$PROJECT_DIR$/out/artifacts/YieldTrialAnalysis</output-path>
+    <root id="root" />
+  </artifact>
+</component>

@@ -59,7 +59,7 @@ public class PlantBreedingGUI extends JFrame {
             JOptionPane.showMessageDialog(this, Labels.noImageIcon + "\n" + e.getMessage(),Labels.error,JOptionPane.ERROR_MESSAGE);
         }
         EnterDialog enterDialog = new EnterDialog(userNamePassword, Labels.enter);
-        window = new JFrame("Növényfajta kísérlet elemző");
+        window = new JFrame("Yield Trial Analysis");
 
         //get the size of the screen
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
