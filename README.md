@@ -1,27 +1,27 @@
-# NovenyfajtaKiserletElemzo
-Data analisys of plant yield trials
-Telepítési információk:
+# YieldTrialAnalysis
+Data analysis of plant yield trials
 
-1. Rendszerkövetelmények
-Minimális hardver: 
--	legalább 1 GHz sebességű processzor
+Installation:
+
+1. Requirements
+Minimum: 
+-	at least 1 GHz CPU
 -	2 GB RAM
--	20 GB lemezterület
--	kijelző: 800*600
--	Internet kapcsolat 100 Mbit sebesség
-Ajánlott hardver konfiguráció:
--	több magos processzor
+-	20 GB disk space
+-	display: 800*600
+-	Internet connection speed 100 Mbit
+Recommended:
+-	more CPU cores
 -	8 GB RAM
--	120 GB SSD lemezmeghajtó
--	HDMI kompatibilis kijelző
--	Internet kapcsolat 1Gbit sebesség
+-	120 GB SSD
+-	HDMI display
+-	Internet connection 1Gbit
 
-Szoftver követelmények:
-•	Windows (32 vagy 64-bit) ajánlott: Windows 10 és Windows 11,
-•	Linux (32 vagy 64-bit), Java futtató környezetet (JRE) Java 8, vagy annál újabb (8.-17.)
-	Az operációs rendszer beállítása: Nyelv: magyar, Területi beállítások: magyar
-
-2.	A Java futtató környezet telepítése
+OS:
+•	Windows (32/64-bit) recommended: Windows 10 és Windows 11, minimum Windows Vista
+•	Linux (32/64-bit), minimum: Java 8
+	
+2.	Installation of JRE
 
 Windows operációs rendszer esetében nem kell a programot telepíteni.
 A program könyvtára tartalmazza a Java futtató környezetet, így önálló működésre képes.
