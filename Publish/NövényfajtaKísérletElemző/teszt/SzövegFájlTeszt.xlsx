@@ -1,0 +1,12 @@
+ <nav id="nav">
+            <a class="tooltip" href="https://www.szlavikszabolcs.hu/oneletrajz.html">Önéletrajz<span class="tooltiptext">Önéletrajz</span></a> |
+            <a class="tooltip" href="https://www.szlavikszabolcs.hu/publikaciok.html">Publikációk<span class="tooltiptext">Publikációk</span></a> |
+            <a class="tooltip" href="https://m2.mtmt.hu/gui2/?type=authors&mode=browse&sel=10013386&view=simpleList">Magyar Tudományos
+                Művek
+                Tára<span class="tooltiptext">MTMT</span></a> |
+            <a class="tooltip" href="https://scholar.google.hu/citations?user=W-RAT2QAAAAJ&hl=hu">Google Tudós<span class="tooltiptext">Google Tudós</span></a> |
+            <a class="tooltip" href="https://www.szlavikszabolcs.hu/programok.html">Programok<span class="tooltiptext">Programok</span></a> |
+            <a class="tooltip" href="https://www.szlavikszabolcs.hu/kajak.html">Sport<span class="tooltiptext">Sport</span></a> |
+            <a class="tooltip" href="https://www.szlavikszabolcs.hu/kert.html">Kert<span class="tooltiptext">Kert</span></a> |
+            <a class="tooltip" href="https://www.szlavikszabolcs.hu/kapcsolat.html">Kapcsolat<span class="tooltiptext">Kapcsolat</span></a> |
+        </nav>
