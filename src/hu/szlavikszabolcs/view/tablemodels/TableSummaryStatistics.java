@@ -7,7 +7,7 @@ import java.text.NumberFormat;
 import java.util.*;
 
 public class TableSummaryStatistics extends AbstractTableModel {
-    String[] columnNames = {"Fajta száma","Standard","Fajta neve", "Átlag termés (t/ha)", "Ismétlés (n)","Szórás (s)", "CV (s%)","Standard (%)"};
+    String[] columnNames = {"Entry","Check","Name", "Average yield (t/ha)", "Replication (n)","Standard deviation (s)", "CV (s%)","Check (%)"};
     List<SummaryStatistics> statistics;
     NumberFormat nf = NumberFormat.getInstance(Locale.getDefault());
 
@@ -39,21 +39,21 @@ public class TableSummaryStatistics extends AbstractTableModel {
         String actualColumName = columnNames[columnIndex];
 
         switch (actualColumName) {
-            case ("Fajta száma"):
+            case ("Entry"):
                 return stat.getEntryNumber();
-            case ("Standard"):
+            case ("Check"):
                 return stat.isStandard() ? "+" : "-";
-            case ("Fajta neve"):
+            case ("Name"):
                 return stat.getVarietyName();
-            case ("Átlag termés (t/ha)"):
+            case ("Average yield (t/ha)"):
                 return nf.format(stat.getAverageYield());
-            case ("Ismétlés (n)"):
+            case ("Replication (n)"):
                 return stat.getRepetitions();
-            case ("Szórás (s)"):
+            case ("Standard deviation (s)"):
                 return nf.format(stat.getDeviation());
             case ("CV (s%)"):
                 return nf.format(stat.getCv());
-            case ("Standard (%)"):
+            case ("Check (%)"):
                 return nf.format(stat.getPercentageOfStandards());
             default:
                 return "Unknown";

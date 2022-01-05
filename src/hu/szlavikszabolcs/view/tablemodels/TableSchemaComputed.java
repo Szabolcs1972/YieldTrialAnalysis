@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class TableSchemaComputed extends AbstractTableModel {
-    String[] columnNames = {"Parcella szám", "Fajta szám", "Fajta neve", "Ismétlés szám", "Tömeg (kg/parcella)", "Nedvesség (%)", "Termés (t/ha)","Év","Kísérlet helyszíne"};
+    String[] columnNames = {"Plot", "Entry", "Name", "Replication", "Weight (kg/plot)", "Moisture (%)", "Yield (t/ha)","Year","Location"};
     public List<RawData> rawDataList;
     NumberFormat nf = NumberFormat.getInstance(Locale.getDefault());
 
@@ -39,24 +39,24 @@ public class TableSchemaComputed extends AbstractTableModel {
         String actualColumName = columnNames[columnIndex];
 
         switch (actualColumName) {
-            case ("Parcella szám"):
+            case ("Plot"):
                 return rawData.getPlot_Number();
-            case ("Fajta szám"):
+            case ("Entry"):
                 return rawData.getEntry_Number();
-            case ("Fajta neve"):
+            case ("Name"):
                 return rawData.getName();
-            case ("Ismétlés szám"):
+            case ("Replication"):
                 return rawData.getRep_Number();
-            case ("Tömeg (kg/parcella)"):
+            case ("Weight (kg/plot)"):
                 return nf.format(rawData.getPlotWeight());
-            case ("Nedvesség (%)"):
+            case ("Moisture (%)"):
                 return nf.format(rawData.getMoisture());
-            case ("Termés (t/ha)"):
+            case ("Yield (t/ha)"):
                 //return (double) (Math.round(rawData.getYield()*1000))/1000;
                 return "<html><strong>" + nf.format(rawData.getYield()) + "</strong></html>";
-            case ("Év"):
+            case ("Year"):
                 return rawData.getYear();
-            case ("Kísérlet helyszíne"):
+            case ("Location"):
                 return rawData.getLocation();
             default:
                 return "Unknown";

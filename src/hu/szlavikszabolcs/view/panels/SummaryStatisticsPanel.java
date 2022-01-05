@@ -61,7 +61,7 @@ public class SummaryStatisticsPanel extends JPanel implements ActionListener, Mo
                 //System.out.println("A rowindex : " + rowIndex);
                 //System.out.println("A colindex : " + colIndex);
                 if (colIndex == 6) {//count the CV% of the trial and show the result on ToolTipText
-                    tip = "A kísérlet CV% értéke = " + nf.format((double) Math.round((sumOfCV/abstractTableModel.getRowCount())*10)/10);
+                    tip = "The CV% of the trial = " + nf.format((double) Math.round((sumOfCV/abstractTableModel.getRowCount())*10)/10);
                 }
 
                 return tip;
@@ -122,7 +122,7 @@ public class SummaryStatisticsPanel extends JPanel implements ActionListener, Mo
             XSSFWorkbook workbook = new XSSFWorkbook();
 
             // Create a blank sheet
-            XSSFSheet sheet = workbook.createSheet("ÖsszefoglalóStatisztika");
+            XSSFSheet sheet = workbook.createSheet("SummaryStatistics");
 
 
             //write the column names to the first row of the sheet
@@ -185,7 +185,7 @@ public class SummaryStatisticsPanel extends JPanel implements ActionListener, Mo
 
             try {
                 // this Writes the workbook 'Statisztika'
-                FileOutputStream out = new FileOutputStream(new File("Statisztika.xlsx"));
+                FileOutputStream out = new FileOutputStream(new File("Statistics.xlsx"));
                 workbook.write(out);
                 out.close();
                 //System.out.println("Statisztika.xlsx written successfully on disk.");

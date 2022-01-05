@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class TableSchemaInputData extends AbstractTableModel {
-    String[] columnNames = {"Parcella szám","Fajta szám","Standard fajta","Fajta neve","Ismétlés szám","Tömeg (kg/parcella)","Nedvesség (%)","Év","Kísérlet helyszíne"};
+    String[] columnNames = {"Plot","Entry","Check","Name","Replication","Weight (kg/plot)","Moisture (%)","Year","Location"};
     public List<RawData> rawDataList;
     NumberFormat nf = NumberFormat.getInstance(Locale.getDefault());
 
@@ -39,23 +39,23 @@ public class TableSchemaInputData extends AbstractTableModel {
         String actualColumName = columnNames[columnIndex];
 
         switch (actualColumName) {
-            case ("Parcella szám"):
+            case ("Plot"):
                 return rawData.getPlot_Number();
-            case ("Fajta szám"):
+            case ("Entry"):
                 return rawData.getEntry_Number();
-            case ("Standard fajta"):
+            case ("Check"):
                 return rawData.isStandard() ? "+" : "-";
-            case ("Fajta neve"):
+            case ("Name"):
                 return rawData.getName();
-            case ("Ismétlés szám"):
+            case ("Replication"):
                 return rawData.getRep_Number();
-            case ("Tömeg (kg/parcella)"):
+            case ("Weight (kg/plot)"):
                 return nf.format(rawData.getPlotWeight());
-            case ("Nedvesség (%)"):
+            case ("Moisture (%)"):
                 return nf.format(rawData.getMoisture());
-            case ("Év"):
+            case ("Year"):
                 return rawData.getYear();
-            case ("Kísérlet helyszíne"):
+            case ("Location"):
                 return rawData.getLocation();
             default:
                 return "Unknown";
