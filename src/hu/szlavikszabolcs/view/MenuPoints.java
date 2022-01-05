@@ -208,15 +208,15 @@ public class MenuPoints extends JMenuBar implements ActionListener {
                     //check the data structure of the file, the column labels in the first row should be match
                     //the column labels in the firs row should be:
 
-                    columnLabels[0] = "parcella";
-                    columnLabels[1] = "sorszám";
-                    columnLabels[2] = "standard";
-                    columnLabels[3] = "fajta";
-                    columnLabels[4] = "ismétlés";
-                    columnLabels[5] = "tömeg";
-                    columnLabels[6] = "nedvesség";
-                    columnLabels[7] = "év";
-                    columnLabels[8] = "helyszín";
+                    columnLabels[0] = "plot";
+                    columnLabels[1] = "entry";
+                    columnLabels[2] = "check";
+                    columnLabels[3] = "name";
+                    columnLabels[4] = "replication";
+                    columnLabels[5] = "weight";
+                    columnLabels[6] = "moisture";
+                    columnLabels[7] = "year";
+                    columnLabels[8] = "location";
 
                     //check the column labels of the input file
 
