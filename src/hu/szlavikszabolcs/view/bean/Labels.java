@@ -81,7 +81,7 @@ public class Labels {
     public static final String emptyConfigFields = "Except the database password, all field must be filled!";
 
     //about
-    public static final String homeURL = "https://www.szlavikszabolcs.hu/KiserletElemzo/FelhasznaloiDokumentacio2.htm";
+    public static final String homeURL = "https://www.szlavikszabolcs.hu/YieldTrialAnalysis/UserManual.htm";
     public static final String aboutOKJ = "Software for programmer exam";
     public static final String aboutSzabolcs = "Dr. Szlávik Szabolcs";
     public static final String mail = "szabolcsszlavik@gmail.com";
